@@ -10,13 +10,16 @@ class ResourceManager
         {
             resource = new Resource{};
         }
-        ResourceManager(const ResourceManager& resource2) : resource(resource2.resource){}   //konstruktor kopiujący
+        ResourceManager(const ResourceManager& resource2)   //konstruktor kopiujący
+        {
+            resource = new Resource(*resource2.resource);
+        }
         ResourceManager& operator=(const ResourceManager resource2)    //kopiujący operator przypisania
         {
             if (this != &resource2)
             {
                 delete resource;
-                resource = new Resource{*resource2.resource}; 
+                resource = new Resource{*resource2.resource};
             }
             return *this;
         }
